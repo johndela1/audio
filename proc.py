@@ -21,7 +21,7 @@ with open("/dev/stdin", "rb", buffering=0) as f:
         try:
             raw = f.read(struct.calcsize(FORMAT))
             v = struct.unpack(FORMAT, raw)[0]
-        except (IndexError, struct.error):
+        except struct.error:
             break
         if decay:
             decay -= 1
